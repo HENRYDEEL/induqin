@@ -42,33 +42,37 @@
                         <strong><span>FECHA:</span></strong> <span t-field="o.invoice_date"/>
                     </div>
                 </div>
-                <div class="row mb8">
-                    <div class="col-2" style="width: 100%; font-size: 13px; border-left: 1px solid black; border-top: 1px solid black; border-bottom: 1px solid black; background-color: #363636; color: #fff">
-                        <span>CLIENTE:</span>
-                    </div>
-                    <div class="col-4" style="width: 100%; font-size: 13px; border-left: 1px solid black; border-top: 1px solid black; border-bottom: 1px solid black;">
-                        <div>
-                            <span t-if="o.partner_id.name" t-field="o.partner_id.name"/>
+                <div class="row ">
+                    <div class="col-12">
+                        <div class="row ">
+                            <div class="col-2" style="width: 100%; font-size: 13px; border-left: 1px solid black; border-top: 1px solid black; border-bottom: 1px solid black; background-color: #363636; color: #fff">
+                                <span>CLIENTE:</span>
+                            </div>
+                            <div class="col-4" style="width: 100%; font-size: 13px; border-left: 1px solid black; border-top: 1px solid black; border-bottom: 1px solid black;">
+                                <div>
+                                    <span t-if="o.partner_id.name" t-field="o.partner_id.name"/>
+                                </div>
+                                <div>
+                                    <span t-if="o.partner_id.street" t-field="o.partner_id.street"/>
+                                </div>
+                                <div>
+                                    <span t-if="o.partner_id.street2" t-field="o.partner_id.street2"/>
+                                </div>
+                                <div>
+                                    <span t-if="o.partner_id.city" t-field="o.partner_id.city"/>-
+                                    <span t-if="o.partner_id.zip" t-field="o.partner_id.zip"/>
+                                </div>
+                                <div>
+                                    <span t-if="o.partner_id.state_id.name" t-field="o.partner_id.state_id.name"/>
+                                </div>
+                                <div>
+                                    <span t-if="o.partner_id.country_id.name" t-field="o.partner_id.country_id.name"/>
+                                </div>
+                            </div>
+                            <div class="col-6" style="width: 100%; font-size: 13px; border-top: 1px solid black; border-right: 1px solid black; border-bottom: 1px solid black;">
+                                <span>R.T.N.:</span>
+                            </div>
                         </div>
-                        <div>
-                            <span t-if="o.partner_id.street" t-field="o.partner_id.street"/>
-                        </div>
-                        <div>
-                            <span t-if="o.partner_id.street2" t-field="o.partner_id.street2"/>
-                        </div>
-                        <div>
-                            <span t-if="o.partner_id.city" t-field="o.partner_id.city"/>-
-                            <span t-if="o.partner_id.zip" t-field="o.partner_id.zip"/>
-                        </div>
-                        <div>
-                            <span t-if="o.partner_id.state_id.name" t-field="o.partner_id.state_id.name"/>
-                        </div>
-                        <div>
-                            <span t-if="o.partner_id.country_id.name" t-field="o.partner_id.country_id.name"/>
-                        </div>
-                    </div>
-                    <div class="col-6" style="width: 100%; font-size: 13px; border-top: 1px solid black; border-right: 1px solid black; border-bottom: 1px solid black;">
-                        <span>R.T.N.:</span>
                     </div>
                 </div>
                 <br/>
