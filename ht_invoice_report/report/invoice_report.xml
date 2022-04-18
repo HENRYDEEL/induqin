@@ -3,45 +3,7 @@
     <data>
         <template id="custom_report_invoice_document">
             <div class="page" style="padding:0; font-family: TimesNewRoman; font-size: 12px;">
-                <div class="row mb8">
-                    <div class="col-3">
-                        <img t-if="res_company.logo" t-att-src="'data:image/png;base64,%s' % to_text(res_company.logo)" style="max-height: 90px;"/>
-                    </div>
-                    <div class="col-6"/>
-                    <div class="col-3">
-                        <div>
-                            <b><span>FACTURA</span></b>
-                        </div>
-                        <div>
-                            <span t-field="o.name"/>
-                        </div>
-                    </div>
-                </div>
-                <div class="row">
-                    <div class="col-5" style="text-align: left">
-                        <strong><span t-field="o.company_id.name"/></strong>
-                        <br/>
-                        <strong>GSTIN: <span t-field="o.company_id.vat"/></strong>
-                        <br/>
-                        <span t-if="o.company_id.street" t-field="o.company_id.street"/>
-                        <br/>
-                        <span t-if="o.company_id.street2" t-field="o.company_id.street2"/>
-                        <br/>
-                        <span t-if="o.company_id.city" t-field="o.company_id.city"/>,
-                        <span t-if="o.company_id.state_id.name" t-field="o.company_id.state_id.name"/>,
-                        <span t-if="o.company_id.zip" t-field="o.company_id.zip"/>
-                        <br/>
-                        <span t-if="o.company_id.country_id.name" t-field="o.company_id.country_id.name"/>
-                        <br/>
-                        <strong>Email:</strong><span t-field="o.company_id.email"/>
-                        <br/>
-                        <strong>Phone:</strong><span t-field="o.company_id.phone"/>
-                    </div>
-                    <div class="col-4"></div>
-                    <div class="col-3">
-                        <strong><span>FECHA:</span></strong> <span t-field="o.invoice_date"/>
-                    </div>
-                </div>
+
                 <div class="row ">
                     <div class="col-12" >
                         <div class="row " style="margin-left:0px; margin-right:0px">
@@ -220,6 +182,47 @@
             <t t-call="web.html_container">
                 <t t-foreach="docs" t-as="o">
                     <t t-set="lang" t-value="o.invoice_user_id.sudo().lang"/>
+                    <div class="header">
+                        <div class="row mb8">
+                            <div class="col-3">
+                                <img t-if="res_company.logo" t-att-src="'data:image/png;base64,%s' % to_text(res_company.logo)" style="max-height: 90px;"/>
+                            </div>
+                            <div class="col-6"/>
+                            <div class="col-3">
+                                <div>
+                                    <b><span>FACTURA</span></b>
+                                </div>
+                                <div>
+                                    <span t-field="o.name"/>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-5" style="text-align: left">
+                                <strong><span t-field="o.company_id.name"/></strong>
+                                <br/>
+                                <strong>GSTIN: <span t-field="o.company_id.vat"/></strong>
+                                <br/>
+                                <span t-if="o.company_id.street" t-field="o.company_id.street"/>
+                                <br/>
+                                <span t-if="o.company_id.street2" t-field="o.company_id.street2"/>
+                                <br/>
+                                <span t-if="o.company_id.city" t-field="o.company_id.city"/>,
+                                <span t-if="o.company_id.state_id.name" t-field="o.company_id.state_id.name"/>,
+                                <span t-if="o.company_id.zip" t-field="o.company_id.zip"/>
+                                <br/>
+                                <span t-if="o.company_id.country_id.name" t-field="o.company_id.country_id.name"/>
+                                <br/>
+                                <strong>Email:</strong><span t-field="o.company_id.email"/>
+                                <br/>
+                                <strong>Phone:</strong><span t-field="o.company_id.phone"/>
+                            </div>
+                            <div class="col-4"></div>
+                            <div class="col-3">
+                                <strong><span>FECHA:</span></strong> <span t-field="o.invoice_date"/>
+                            </div>
+                        </div>
+                    </div>
                     <div class="article" t-att-data-oe-model="o and o._name" t-att-data-oe-id="o and o.id"
                      t-att-data-oe-lang="o and o.env.context.get('lang')">
                         <t t-call="ht_invoice_report.custom_report_invoice_document" t-lang="lang"/>
