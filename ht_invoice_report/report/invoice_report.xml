@@ -160,7 +160,7 @@
                                 <tr>
                                     <th><span>TOTAL A PAGAR L</span></th>
                                     <th style="border-left: 1px solid black; border-top: 1px solid black; border-right: 1px solid black; border-bottom: 1px solid black; background-color: #abb0ad">
-                                        <span t-field="o.amount_total"/>
+                                        <span  class="text-right"  t-field="o.amount_total"/>
                                     </th>
                                 </tr>
                             </thead>
@@ -203,6 +203,9 @@
                                 <div>
                                     <span t-field="o.name"/>
                                 </div>
+                                <div >
+                                    <strong><span>FECHA:</span></strong> <span t-field="o.invoice_date"/>
+                                </div>
                             </div>
                         </div>
                         <div class="row">
@@ -226,9 +229,8 @@
                                 <strong>Teléfono:</strong><span t-field="o.company_id.phone"/>
                             </div>
                             <div class="col-4"></div>
-                            <div class="col-3">
-                                <strong><span>FECHA:</span></strong> <span t-field="o.invoice_date"/>
-                            </div>
+                            <div class="col-3"></div>
+
                         </div>
                     </div>
                     <div class="article" t-att-data-oe-model="o and o._name" t-att-data-oe-id="o and o.id"
