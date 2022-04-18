@@ -1,0 +1,229 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <data>
+        <template id="custom_report_invoice_document">
+            <div class="page" style="padding:0; font-family: TimesNewRoman; font-size: 12px;">
+                <div class="row mb8">
+                    <div class="col-3">
+                        <img t-if="res_company.logo" t-att-src="'data:image/png;base64,%s' % to_text(res_company.logo)" style="max-height: 90px;"/>
+                    </div>
+                    <div class="col-6"/>
+                    <div class="col-3">
+                        <div>
+                            <b><span>FACTURA</span></b>
+                        </div>
+                        <div>
+                            <span t-field="o.name"/>
+                        </div>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-5" style="text-align: left">
+                        <strong><span t-field="o.company_id.name"/></strong>
+                        <br/>
+                        <strong>GSTIN: <span t-field="o.company_id.vat"/></strong>
+                        <br/>
+                        <span t-if="o.company_id.street" t-field="o.company_id.street"/>
+                        <br/>
+                        <span t-if="o.company_id.street2" t-field="o.company_id.street2"/>
+                        <br/>
+                        <span t-if="o.company_id.city" t-field="o.company_id.city"/>,
+                        <span t-if="o.company_id.state_id.name" t-field="o.company_id.state_id.name"/>,
+                        <span t-if="o.company_id.zip" t-field="o.company_id.zip"/>
+                        <br/>
+                        <span t-if="o.company_id.country_id.name" t-field="o.company_id.country_id.name"/>
+                        <br/>
+                        <strong>Email:</strong><span t-field="o.company_id.email"/>
+                        <br/>
+                        <strong>Phone:</strong><span t-field="o.company_id.phone"/>
+                    </div>
+                    <div class="col-4"></div>
+                    <div class="col-3">
+                        <strong><span>FECHA:</span></strong> <span t-field="o.invoice_date"/>
+                    </div>
+                </div>
+                <div class="row mb8">
+                    <div class="col-2" style="width: 100%; font-size: 13px; border-left: 1px solid black; border-top: 1px solid black; border-bottom: 1px solid black; background-color: #363636; color: #fff">
+                        <span>CLIENTE:</span>
+                    </div>
+                    <div class="col-3" style="width: 100%; font-size: 13px; border-left: 1px solid black; border-top: 1px solid black; border-bottom: 1px solid black;">
+                        <div>
+                            <span t-if="o.partner_id.name" t-field="o.partner_id.name"/>
+                        </div>
+                        <div>
+                            <span t-if="o.partner_id.street" t-field="o.partner_id.street"/>
+                        </div>
+                        <div>
+                            <span t-if="o.partner_id.street2" t-field="o.partner_id.street2"/>
+                        </div>
+                        <div>
+                            <span t-if="o.partner_id.city" t-field="o.partner_id.city"/>-
+                            <span t-if="o.partner_id.zip" t-field="o.partner_id.zip"/>
+                        </div>
+                        <div>
+                            <span t-if="o.partner_id.state_id.name" t-field="o.partner_id.state_id.name"/>
+                        </div>
+                        <div>
+                            <span t-if="o.partner_id.country_id.name" t-field="o.partner_id.country_id.name"/>
+                        </div>
+                    </div>
+                    <div class="col-6" style="width: 100%; font-size: 13px; border-top: 1px solid black; border-right: 1px solid black; border-bottom: 1px solid black;">
+                        <span>R.T.N.:</span>
+                    </div>
+                </div>
+                <br/>
+                <br/>
+                <table name="invoice_line_table" style="width: 100%">
+                    <thead>
+                        <tr style="background-color: #363636; color: #fff">
+                            <th class="text-right" style="border-left: 1px solid black; border-top: 1px solid black; border-right: 1px solid black; border-bottom: 1px solid black;"><span>CANTIDAD</span></th>
+                            <th class="text-left" style="border-top: 1px solid black; border-right: 1px solid black; border-bottom: 1px solid black;"><span>DESCRIPTION</span></th>
+                            <th class="text-right" style="border-top: 1px solid black; border-right: 1px solid black; border-bottom: 1px solid black;"><span>PRECIO UNITARIO</span></th>
+                            <th class="text-right" style="border-top: 1px solid black; border-right: 1px solid black; border-bottom: 1px solid black;"><span>DESCUENTOS Y REBAJAS OTORGADOS</span></th>
+                            <th class="text-right" style="border-top: 1px solid black; border-right: 1px solid black; border-bottom: 1px solid black;"><span>TOTAL</span></th>
+                        </tr>
+                    </thead>
+                    <tbody class="invoice_tbody">
+                        <t t-set="total_discount" t-value="0"/>
+                        <t t-set="sub_discount" t-value="0"/>
+                        <t t-foreach="o.invoice_line_ids" t-as="line">
+                            <t t-set="sub_discount" t-value="((line.quantity * line.price_unit) - (line.price_subtotal)) / ((line.quantity * line.price_unit) / 100)"/>
+                            <t t-set="total_discount" t-value="total_discount + sub_discount"/>
+                            <tr>
+                                <td class="text-right" style="border-left: 1px solid black; border-bottom: 1px solid black; border-right: 1px solid black;"><span t-field="line.quantity"/></td>
+                                <td class="text-left" style="border-bottom: 1px solid black; border-right: 1px solid black; "><span t-field="line.name"/></td>
+                                <td class="text-right" style="border-bottom: 1px solid black; border-right: 1px solid black; "><span t-field="line.price_unit"/></td>
+                                <td class="text-right" style="border-bottom: 1px solid black; border-right: 1px solid black; "><span t-esc="'%.2f'% sub_discount"/></td>
+                                <td class="text-right" style="border-bottom: 1px solid black; border-right: 1px solid black;"><span t-field="line.price_subtotal"/></td>
+                            </tr>
+                        </t>
+                        <tr>
+                            <td style="border-right: none; border-bottom: none"> </td>
+                            <td style="border-right: none; border-bottom: none"> </td>
+                            <td class="text-right" style="border-left: 1px solid black; border-bottom: 1px solid black; border-right: 1px solid black;"><strong><span>TOTAL</span></strong></td>
+                            <td class="text-right" style="border-bottom: 1px solid black; border-right: 1px solid black;"><strong><span t-esc="'%.2f'% total_discount"/></strong></td>
+                            <td class="text-right" style="border-bottom: 1px solid black; border-right: 1px solid black;"><strong><span t-field="o.amount_untaxed"/></strong></td>
+                        </tr>
+                    </tbody>
+                </table>
+                <br/>
+                <br/>
+                <div class="row">
+                    <div class="col-6" style="border-left: 1px solid black; border-top: 1px solid black; border-right: 1px solid black; border-bottom: 1px solid black; background-color: #abb0ad">
+                        <div>
+                            <strong><span>VALOR EN LETRAS:</span></strong>
+                        </div>
+                        <div>
+                            <span t-esc="o.currency_id.amount_to_text(o.amount_total)"/>
+                        </div>
+                    </div>
+                    <div class="col-6"/>
+                </div>
+                <br/>
+                <br/>
+                <div class="row">
+                    <div class="col-6">
+                        <div>
+                            <b><span>LA FACTURA ES BENEFICIO DE TODOS "EXIJALA"</span></b>
+                        </div>
+                        <div>
+                            <table>
+                                <thead>
+                                    <tr style="border-left: 1px solid black; border-top: 1px solid black; border-right: 1px solid black; border-bottom: 1px solid black;">
+                                        <th><span>N Correlative de orden de compra exenta</span></th>
+                                        <th style="border-left: 1px solid black; background-color: #abb0ad"><span>N Correlative de orden de compra exenta</span></th>
+                                    </tr>
+                                    <tr style="border-left: 1px solid black; border-right: 1px solid black; border-bottom: 1px solid black;">
+                                        <th><span>N Correlative de constancia de registro exonerado</span></th>
+                                        <th style="border-left: 1px solid black; background-color: #abb0ad"><span>N Correlative de constancia de registro exonerado</span></th>
+                                    </tr>
+                                    <tr style="border-left: 1px solid black; border-right: 1px solid black; border-bottom: 1px solid black;">
+                                        <th><span>N identificativo del registro de la SAG</span></th>
+                                        <th style="border-left: 1px solid black; background-color: #abb0ad"><span>N identificativo del registro de la SAG</span></th>
+                                    </tr>
+                                </thead>
+                            </table>
+                        </div>
+                    </div>
+                    <div class="col-6">
+                        <table>
+                            <thead>
+                                <tr>
+                                    <th><span>IMPORTE EXONERADO L</span></th>
+                                    <th style="border-left: 1px solid black; border-top: 1px solid black; border-right: 1px solid black; border-bottom: 1px solid black; background-color: #abb0ad">
+                                        <span>IMPORTE EXONERADO L</span>
+                                    </th>
+                                </tr>
+                                <tr>
+                                    <th><span>IMPORTE EXENTO L</span></th>
+                                    <th style="border-left: 1px solid black; border-top: 1px solid black; border-right: 1px solid black; border-bottom: 1px solid black; background-color: #abb0ad">
+<!--                                        <span>IMPORTE EXENTO L</span>-->
+                                    </th>
+                                </tr>
+                                <tr>
+                                    <th><span>IMPORTE GRAVADO 15% L</span></th>
+                                    <th style="border-left: 1px solid black; border-top: 1px solid black; border-right: 1px solid black; border-bottom: 1px solid black; background-color: #abb0ad">
+<!--                                        <span>IMPORTE GRAVADO 15% L</span>-->
+                                    </th>
+                                </tr>
+                                <tr>
+                                    <th><span>IMPORTE GRAVADO 18% L</span></th>
+                                    <th style="border-left: 1px solid black; border-top: 1px solid black; border-right: 1px solid black; border-bottom: 1px solid black; background-color: #abb0ad">
+<!--                                        <span>IMPORTE GRAVADO 18% L</span>-->
+                                    </th>
+                                </tr>
+                                <tr>
+                                    <th><span>I.S.V 15% L</span></th>
+                                    <th style="border-left: 1px solid black; border-top: 1px solid black; border-right: 1px solid black; border-bottom: 1px solid black; background-color: #abb0ad">
+<!--                                        <span>I.S.V 15% L</span>-->
+                                    </th>
+                                </tr>
+                                <tr>
+                                    <th><span>I.S.V 18% L</span></th>
+                                    <th style="border-left: 1px solid black; border-top: 1px solid black; border-right: 1px solid black; border-bottom: 1px solid black; background-color: #abb0ad">
+<!--                                        <span>I.S.V 18% L</span>-->
+                                    </th>
+                                </tr>
+                                <tr>
+                                    <th><span>TOTAL A PAGAR L</span></th>
+                                    <th style="border-left: 1px solid black; border-top: 1px solid black; border-right: 1px solid black; border-bottom: 1px solid black; background-color: #abb0ad">
+<!--                                        <span>TOTAL A PAGAR L</span>-->
+                                    </th>
+                                </tr>
+                            </thead>
+                        </table>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-3">
+                        <strong><span>ORIGINAL:CLIENTE</span></strong>
+                    </div>
+                    <div class="col-3">
+                        <strong><span>COPIA:EMISOR</span></strong>
+                    </div>
+                    <div class="col-6"/>
+                </div>
+            </div>
+        </template>
+
+        <template id="custom_report_invoice_main">
+            <t t-call="web.html_container">
+                <t t-foreach="docs" t-as="o">
+                    <t t-set="lang" t-value="o.invoice_user_id.sudo().lang"/>
+                    <div class="article" t-att-data-oe-model="o and o._name" t-att-data-oe-id="o and o.id"
+                     t-att-data-oe-lang="o and o.env.context.get('lang')">
+                        <t t-call="ht_invoice_report.custom_report_invoice_document" t-lang="lang"/>
+                    </div>
+                </t>
+            </t>
+        </template>
+        <report
+                id="custom_account_invoices"
+                model="account.move"
+                name="ht_invoice_report.custom_report_invoice_main"
+                string="Print Invoice"
+                report_type="qweb-pdf"
+                multi="False"
+        />
+    </data>
+</odoo>
