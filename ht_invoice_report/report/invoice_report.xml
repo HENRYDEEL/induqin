@@ -152,7 +152,7 @@
                         </div>
                     </div>
                     <div class="col-6">
-                        <table>
+                        <table style="float:right">
                             <thead>
                                 <tr>
                                     <th><span>IMPORTE EXONERADO L</span></th>
