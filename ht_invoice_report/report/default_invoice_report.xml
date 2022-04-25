@@ -253,15 +253,7 @@
                                 </div>
 
                         </div>
-                        <div class="row">
-                            <div class="col-3">
-                                <strong><span>ORIGINAL:CLIENTE</span></strong>
-                            </div>
-                            <div class="col-3">
-                                <strong><span>COPIA:EMISOR</span></strong>
-                            </div>
-                            <div class="col-6"/>
-                        </div>
+
                     </div>
                     <p t-if="o.move_type in ('out_invoice', 'in_refund') and o.payment_reference" name="payment_communication">
                         Please use the following communication for your payment : <b><span t-field="o.payment_reference"/></b>
@@ -278,6 +270,18 @@
                     <p t-if="o.invoice_incoterm_id" name="incoterm">
                         <strong>Incoterm: </strong><span t-field="o.invoice_incoterm_id.code"/> - <span t-field="o.invoice_incoterm_id.name"/>
                     </p>
+                    <br/>
+                    <br/>
+                    <br/>
+                    <div class="row">
+                        <div class="col-3">
+                            <strong><span>ORIGINAL:CLIENTE</span></strong>
+                        </div>
+                        <div class="col-3">
+                            <strong><span>COPIA:EMISOR</span></strong>
+                        </div>
+                        <div class="col-6"/>
+                    </div>
                     <div id="qrcode" t-if="o.display_qr_code and o.amount_residual > 0">
                         <p t-if="qr_code_urls.get(o.id)">
                             <strong class="text-center">Scan me with your banking app.</strong><br/><br/>
