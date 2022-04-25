@@ -11,7 +11,9 @@
     ],
     
     'data': [
-        'report/invoice_report.xml'
+        'views/account_move.xml',
+        'report/invoice_report.xml',
+        'report/default_invoice_report.xml'
     ],
     'installable': True,
     'auto_install': False,
