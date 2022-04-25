@@ -126,15 +126,16 @@
                     <br/>
                     <div class="row">
                         <div class="col-6" >
-                            <div style="border-left: 1px solid black; border-top: 1px solid black; border-right: 1px solid black; border-bottom: 1px solid black; background-color: #abb0ad">
+                            <div style=" padding:5px; border-left: 1px solid black; border-top: 1px solid black; border-right: 1px solid black; border-bottom: 1px solid black; background-color: #cfcfcf">
                                 <strong><span>VALOR EN LETRAS:</span></strong>
                             </div>
-                            <div style="border-left: 1px solid black; border-top: 1px solid black; border-right: 1px solid black; border-bottom: 1px solid black; background-color: #abb0ad">
+                            <div style=" padding:5px; border-left: 1px solid black; border-top: 1px solid black; border-right: 1px solid black; border-bottom: 1px solid black; background-color: #cfcfcf">
                                 <span t-esc="o.currency_id.amount_to_text(o.amount_total)"/>
                             </div>
                         </div>
                         <div class="col-6"/>
                     </div>
+                    <br/>
                     <div class="clearfix">
                         <div id="total" class="row"  style="page-break-inside: avoid;">
 
@@ -145,17 +146,17 @@
                                     <div>
                                         <table>
                                             <thead>
-                                                <tr style="border-left: 1px solid black; border-top: 1px solid black; border-right: 1px solid black; border-bottom: 1px solid black;">
+                                                <tr style=" padding:5px; border-left: 1px solid black; border-top: 1px solid black; border-right: 1px solid black; border-bottom: 1px solid black;">
                                                     <th><span>N Correlative de orden de compra exenta</span></th>
-                                                    <th style="border-left: 1px solid black; background-color: #abb0ad"><span>N Correlative de orden de compra exenta</span></th>
+                                                    <th style="border-left: 1px solid black; background-color: #cfcfcf">  </th>
                                                 </tr>
-                                                <tr style="border-left: 1px solid black; border-right: 1px solid black; border-bottom: 1px solid black;">
+                                                <tr style=" padding:5px; border-left: 1px solid black; border-right: 1px solid black; border-bottom: 1px solid black;">
                                                     <th><span>N Correlative de constancia de registro exonerado</span></th>
-                                                    <th style="border-left: 1px solid black; background-color: #abb0ad"><span>N Correlative de constancia de registro exonerado</span></th>
+                                                    <th style="border-left: 1px solid black; background-color: #cfcfcf"> </th>
                                                 </tr>
-                                                <tr style="border-left: 1px solid black; border-right: 1px solid black; border-bottom: 1px solid black;">
+                                                <tr style=" padding:5px; border-left: 1px solid black; border-right: 1px solid black; border-bottom: 1px solid black;">
                                                     <th><span>N identificativo del registro de la SAG</span></th>
-                                                    <th style="border-left: 1px solid black; background-color: #abb0ad"><span>N identificativo del registro de la SAG</span></th>
+                                                    <th style="border-left: 1px solid black; background-color: #cfcfcf">  </th>
                                                 </tr>
                                             </thead>
                                         </table>
@@ -166,47 +167,47 @@
                                     <table style="float:right">
                                         <thead>
 
-                                            <tr>
+                                            <tr style="padding:5px;">
                                                 <th><span>IMPORTE EXONERADO </span></th>
-                                                <th style="border-left: 1px solid black; border-top: 1px solid black; border-right: 1px solid black; border-bottom: 1px solid black; background-color: #abb0ad">
+                                                <th style="border-left: 1px solid black; border-top: 1px solid black; border-right: 1px solid black; border-bottom: 1px solid black; background-color: #cfcfcf">
                                                     <span t-esc="0.0" t-options='{"widget": "monetary", "display_currency": o.currency_id}'/>
                                                 </th>
                                             </tr>
-                                            <tr>
+                                            <tr style="padding:5px;">
                                                 <th><span>IMPORTE EXENTO </span></th>
-                                                <th style="border-left: 1px solid black; border-top: 1px solid black; border-right: 1px solid black; border-bottom: 1px solid black; background-color: #abb0ad">
+                                                <th style="border-left: 1px solid black; border-top: 1px solid black; border-right: 1px solid black; border-bottom: 1px solid black; background-color: #cfcfcf">
                                                     <span t-esc="0.0" t-options='{"widget": "monetary", "display_currency": o.currency_id}'/>
                                                 </th>
                                             </tr>
-                                            <tr>
+                                            <tr style="padding:5px;">
                                                 <th><span>IMPORTE GRAVADO 15% </span></th>
-                                                <th style="border-left: 1px solid black; border-top: 1px solid black; border-right: 1px solid black; border-bottom: 1px solid black; background-color: #abb0ad">
+                                                <th style="border-left: 1px solid black; border-top: 1px solid black; border-right: 1px solid black; border-bottom: 1px solid black; background-color: #cfcfcf">
                                                     <span t-esc="0.0" t-options='{"widget": "monetary", "display_currency": o.currency_id}'/>
                                                 </th>
                                             </tr>
-                                            <tr>
+                                            <tr style="padding:5px;">
                                                 <th><span>IMPORTE GRAVADO 18% </span></th>
-                                                <th style="border-left: 1px solid black; border-top: 1px solid black; border-right: 1px solid black; border-bottom: 1px solid black; background-color: #abb0ad">
+                                                <th style="border-left: 1px solid black; border-top: 1px solid black; border-right: 1px solid black; border-bottom: 1px solid black; background-color: #cfcfcf">
                                                     <span t-esc="0.0" t-options='{"widget": "monetary", "display_currency": o.currency_id}'/>
                                                 </th>
                                             </tr>
-                                            <tr>
+                                            <tr style="padding:5px;">
                                                 <th><span>I.S.V 15% </span></th>
-                                                <th style="border-left: 1px solid black; border-top: 1px solid black; border-right: 1px solid black; border-bottom: 1px solid black; background-color: #abb0ad">
+                                                <th style="border-left: 1px solid black; border-top: 1px solid black; border-right: 1px solid black; border-bottom: 1px solid black; background-color: #cfcfcf">
 
                                                     <span t-esc="tax_totals['amount_total'] - tax_totals['amount_untaxed']" t-options='{"widget": "monetary", "display_currency": o.currency_id}'/>
                                                 </th>
                                             </tr>
-                                            <tr>
+                                            <tr style="padding:5px;">
                                                 <th><span>I.S.V 18% </span></th>
-                                                <th style="border-left: 1px solid black; border-top: 1px solid black; border-right: 1px solid black; border-bottom: 1px solid black; background-color: #abb0ad">
+                                                <th style="border-left: 1px solid black; border-top: 1px solid black; border-right: 1px solid black; border-bottom: 1px solid black; background-color: #cfcfcf">
 
                                                     <span t-esc="0.0" t-options='{"widget": "monetary", "display_currency": o.currency_id}'/>
                                                 </th>
                                             </tr>
-                                            <tr style="border-bottom: 1px solid black;">
+                                            <tr style="padding:5px;border-bottom: 1px solid black;">
                                                 <th><span>TOTAL A PAGAR </span></th>
-                                                <th style="border-left: 1px solid black; border-top: 1px solid black; border-right: 1px solid black; border-bottom: 1px solid black; background-color: #abb0ad">
+                                                <th style="border-left: 1px solid black; border-top: 1px solid black; border-right: 1px solid black; border-bottom: 1px solid black; background-color: #cfcfcf">
                                                     <span t-esc="tax_totals['formatted_amount_total']"/>
                                                 </th>
                                             </tr>
@@ -217,7 +218,7 @@
                                                 <t t-if="o.payment_state != 'invoicing_legacy'">
                                                     <t t-set="payments_vals" t-value="o.sudo()._get_reconciled_info_JSON_values()"/>
                                                     <t t-foreach="payments_vals" t-as="payment_vals">
-                                                        <tr>
+                                                        <tr style="padding:5px;">
                                                             <td>
                                                                 <i class="oe_form_field text-right oe_payment_label">Paid on <t t-esc="payment_vals['date']" t-options='{"widget": "date"}'/></i>
                                                             </td>
@@ -227,7 +228,7 @@
                                                         </tr>
                                                     </t>
                                                     <t t-if="len(payments_vals) > 0">
-                                                        <tr class="border-black">
+                                                        <tr class="border-black" style="padding:5px;">
                                                             <td><strong>Amount Due</strong></td>
                                                             <td class="text-right">
                                                                 <span t-field="o.amount_residual"/>
