@@ -385,7 +385,7 @@
                     <div class="float-right">
                         <h3 class="mt0 text-right" t-field="company.report_header"/>
                     </div>
-                    <img t-if="company.logo" t-att-src="image_data_uri(company.logo)" class="float-left" alt="Logo" style="width:200px !important"/>
+                    <img t-if="company.logo" t-att-src="image_data_uri(company.logo)" class="float-left" alt="Logo" style="width:200px !important; height: auto !important; max-height: auto !important"/>
                     <div class="float-left company_address">
                         <span t-if="company.company_details" t-field="company.company_details"></span>
                     </div>
@@ -418,7 +418,7 @@
                 <div class="o_boxed_header">
                     <div class="row mb8">
                         <div class="col-6">
-                            <img t-if="company.logo" t-att-src="image_data_uri(company.logo)" alt="Logo"  style="width:200px !important"/>
+                            <img t-if="company.logo" t-att-src="image_data_uri(company.logo)" alt="Logo"  style="width:200px !important; height: auto !important; max-height: auto !important"/>
                         </div>
                         <div class="col-6 text-right mb4">
                             <h4 class="mt0" t-field="company.report_header"/>
@@ -453,7 +453,7 @@
                 <div class="o_clean_header">
                     <div class="row">
                         <div class="col-6">
-                            <img t-if="company.logo" t-att-src="image_data_uri(company.logo)" alt="Logo"  style="width:200px !important"/>
+                            <img t-if="company.logo" t-att-src="image_data_uri(company.logo)" alt="Logo"  style="width:200px !important; height: auto !important; max-height: auto !important"/>
                         </div>
                         <div class="col-5 offset-1" name="company_address">
                             <ul class="list-unstyled">
@@ -490,7 +490,7 @@
                     </div>
                     <div class="col-1">
                         <ul t-if="report_type == 'pdf'" class="list-inline pagenumber float-right text-center" style="border-color: #3bebff !important">
-                            <li class="list-inline-item" style="background: #3bebff !important; color: black"><strong><span class="page"/></strong></li>
+                            <li class="list-inline-item" style="background: #3bebff !important; color: black;border-color: #3bebff !important"><strong><span class="page"/></strong></li>
                         </ul>
                     </div>
                 </div>
