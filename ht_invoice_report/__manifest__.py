@@ -7,7 +7,8 @@
     'summary': '',
     "depends": [
         "base",
-        "account"
+        "account",
+        "web"
     ],
     
     'data': [
