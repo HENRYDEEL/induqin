@@ -477,7 +477,7 @@
                 <t t-out="0"/>
             </div>
 
-            <div t-attf-class="footer o_clean_footer o_company_#{company.id}_layout" style="border-top: 1px solid #3bebff;">
+            <div t-attf-class="footer   o_company_#{company.id}_layout" style="border-top: 1px solid #3bebff;">
                 <div class="row">
                     <div class="col-4">
                         <span t-field="company.report_footer"/>
