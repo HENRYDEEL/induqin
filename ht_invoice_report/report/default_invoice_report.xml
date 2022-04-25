@@ -123,6 +123,7 @@
                             </t>
                         </tbody>
                     </table>
+                    <br/>
                     <div class="row">
                         <div class="col-6" >
                             <div style="border-left: 1px solid black; border-top: 1px solid black; border-right: 1px solid black; border-bottom: 1px solid black; background-color: #abb0ad">
@@ -168,55 +169,42 @@
                                             <tr>
                                                 <th><span>IMPORTE EXONERADO </span></th>
                                                 <th style="border-left: 1px solid black; border-top: 1px solid black; border-right: 1px solid black; border-bottom: 1px solid black; background-color: #abb0ad">
-                                                    <span>IMPORTE EXONERADO L</span>
+                                                    <span t-esc="0.0" t-options='{"widget": "monetary", "display_currency": o.currency_id}'/>
                                                 </th>
                                             </tr>
                                             <tr>
                                                 <th><span>IMPORTE EXENTO </span></th>
                                                 <th style="border-left: 1px solid black; border-top: 1px solid black; border-right: 1px solid black; border-bottom: 1px solid black; background-color: #abb0ad">
-                                                    <!--                                        <span>IMPORTE EXENTO L</span>-->
+                                                    <span t-esc="0.0" t-options='{"widget": "monetary", "display_currency": o.currency_id}'/>
                                                 </th>
                                             </tr>
                                             <tr>
                                                 <th><span>IMPORTE GRAVADO 15% </span></th>
                                                 <th style="border-left: 1px solid black; border-top: 1px solid black; border-right: 1px solid black; border-bottom: 1px solid black; background-color: #abb0ad">
-                                                    <!--                                        <span>IMPORTE GRAVADO 15% L</span>-->
+                                                    <span t-esc="0.0" t-options='{"widget": "monetary", "display_currency": o.currency_id}'/>
                                                 </th>
                                             </tr>
                                             <tr>
                                                 <th><span>IMPORTE GRAVADO 18% </span></th>
                                                 <th style="border-left: 1px solid black; border-top: 1px solid black; border-right: 1px solid black; border-bottom: 1px solid black; background-color: #abb0ad">
-                                                    <!--                                        <span>IMPORTE GRAVADO 18% L</span>-->
+                                                    <span t-esc="0.0" t-options='{"widget": "monetary", "display_currency": o.currency_id}'/>
                                                 </th>
                                             </tr>
                                             <tr>
                                                 <th><span>I.S.V 15% </span></th>
                                                 <th style="border-left: 1px solid black; border-top: 1px solid black; border-right: 1px solid black; border-bottom: 1px solid black; background-color: #abb0ad">
-                                                    <!--                                        <span>I.S.V 15% L</span>-->
-                                                    <t t-foreach="tax_totals['subtotals']" t-as="subtotal">
-                                                        <tr class="border-black o_subtotal">
 
-
-                                                            <td><strong t-esc="subtotal['name']"/></td>
-
-                                                            <td class="text-right">
-                                                                <span
-                                                                        t-att-class="oe_subtotal_footer_separator"
-                                                                        t-esc="subtotal['formatted_amount']"
-                                                                />
-                                                            </td>
-                                                        </tr>
-
-                                                    </t>
+                                                    <span t-esc="tax_totals['amount_total'] - tax_totals['amount_untaxed']" t-options='{"widget": "monetary", "display_currency": o.currency_id}'/>
                                                 </th>
                                             </tr>
                                             <tr>
                                                 <th><span>I.S.V 18% </span></th>
                                                 <th style="border-left: 1px solid black; border-top: 1px solid black; border-right: 1px solid black; border-bottom: 1px solid black; background-color: #abb0ad">
-                                                    <!--                                        <span>I.S.V 18% L</span>-->
+
+                                                    <span t-esc="0.0" t-options='{"widget": "monetary", "display_currency": o.currency_id}'/>
                                                 </th>
                                             </tr>
-                                            <tr>
+                                            <tr style="border-bottom: 1px solid black;">
                                                 <th><span>TOTAL A PAGAR </span></th>
                                                 <th style="border-left: 1px solid black; border-top: 1px solid black; border-right: 1px solid black; border-bottom: 1px solid black; background-color: #abb0ad">
                                                     <span t-esc="tax_totals['formatted_amount_total']"/>
@@ -328,7 +316,7 @@
                              t-options='{"widget": "contact", "fields": ["address", "name"], "no_marker": true}'
                         />
                         <p t-if="company.partner_id.vat">
-                            <t t-out="o.company_id.account_fiscal_country_id.vat_label or 'Tax ID'"/>:
+                            <t t-out="o.company_id.account_fiscal_country_id.vat_label or 'RTN'"/>:
                             <span t-field="company.partner_id.vat"/>
                         </p>
                     </div>
@@ -345,7 +333,7 @@
                     <t t-set="address">
                         <address t-field="o.partner_id" t-options='{"widget": "contact", "fields": ["address", "name"], "no_marker": True}' class="mb-0"/>
                         <p t-if="o.partner_id.vat">
-                            <t t-out="o.company_id.account_fiscal_country_id.vat_label or 'Tax ID'"/>:
+                            <t t-out="o.company_id.account_fiscal_country_id.vat_label or 'RTN'"/>:
                             <span t-field="o.partner_id.vat"/>
                         </p>
                     </t>
@@ -355,7 +343,7 @@
             </div>
 
             <div t-attf-class="footer o_standard_footer o_company_#{company.id}_layout">
-                <div class="text-center" style="border-top: 1px solid black;">
+                <div class="text-center" style="border-top: 1px solid blue;">
                     <ul class="list-inline mb4">
 
                         <li t-if="company.phone" class="list-inline-item d-inline">
@@ -368,7 +356,7 @@
                             <span t-field="company.website"/>
                         </li>
                         <li t-if="company.vat" class="list-inline-item d-inline"><t
-                                t-out="company.country_id.vat_label or 'Tax ID'"/>:
+                                t-out="company.country_id.vat_label or 'RTN'"/>:
                             <span t-field="company.vat"/>
                         </li>
                     </ul>
