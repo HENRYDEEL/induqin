@@ -481,15 +481,15 @@
 
             <div t-attf-class="footer   o_company_#{company.id}_layout" style="border-top: 1px solid #3bebff;">
                 <div class="row">
-                    <div class="col-4">
-                        <span t-field="company.report_footer"/>
-                    </div>
-                    <div class="col-4">
+<!--                    <div class="col-4">-->
+<!--                        <span t-field="company.report_footer"/>-->
+<!--                    </div>-->
+                    <div class="col-11 text-center">
                         <span t-if="company.company_details" t-field="company.company_details"/>
                     </div>
-                    <div class="col-3">
-                        <h5 class="mt0 mb0" t-field="company.report_header"/>
-                    </div>
+<!--                    <div class="col-3">-->
+<!--                        <h5 class="mt0 mb0" t-field="company.report_header"/>-->
+<!--                    </div>-->
                     <div class="col-1">
                         <ul t-if="report_type == 'pdf'" class="list-inline pagenumber float-right text-center" style="border-color: #3bebff !important">
                             <li class="list-inline-item" style="  color: black;border: none !important ;"> <span class="page"/> / <span class="topage"/></li>
