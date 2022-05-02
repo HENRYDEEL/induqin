@@ -485,7 +485,7 @@
 <!--                        <span t-field="company.report_footer"/>-->
 <!--                    </div>-->
                     <div class="col-11 text-center">
-                        <span t-if="company.company_details" t-field="company.company_details"/>
+                        Entrada a Colonia El Hogar, Bloque O casa No. 1, Francisco Morazán 05, <br/>Tegucigalpa, Honduras.
                     </div>
 <!--                    <div class="col-3">-->
 <!--                        <h5 class="mt0 mb0" t-field="company.report_header"/>-->
