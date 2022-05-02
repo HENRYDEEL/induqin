@@ -503,7 +503,7 @@
 <!--                        <span t-field="company.report_footer"/>-->
 <!--                    </div>-->
                     <div class="col-11 text-center">
-                        Entrada a Colonia El Hogar, Bloque O casa No. 1, Francisco Morazán 05, <br/>Tegucigalpa, Honduras.
+                        Colonia Las Colinas, entrada a Colonia El Hogar, en Edificio COPEMH frente a Gasolinera Puma <br/>Local 1 y 2, Tegucigalpa, AMDC, Tegucigalpa, Honduras
                     </div>
 <!--                    <div class="col-3">-->
 <!--                        <h5 class="mt0 mb0" t-field="company.report_header"/>-->
