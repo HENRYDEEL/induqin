@@ -332,7 +332,25 @@
                  t-att-data-oe-model="o and o._name" t-att-data-oe-id="o and o.id"
                  t-att-data-oe-lang="o and o.env.context.get('lang')">
                 <div class="pt-5">
-                    <span t-field="o.partner_id"/>
+
+                    <t t-if="o._name == 'sale.order'">
+                        Cliente: <span t-field="o.partner_id"/>
+                        <div>
+                           <div>Dirección: <address t-field="o.partner_id" t-options='{"widget": "contact", "fields": ["address", "name"], "no_marker": True}' class="mb-0"/></div>
+                           <div>Teléfono: <span t-field="o.partner_id.mobile"/></div>
+                        </div>
+                    </t>
+                    <t t-else="">
+                        <span t-field="o.partner_id"/>
+                        <div>
+                            <address t-field="o.partner_id" t-options='{"widget": "contact", "fields": ["address", "name"], "no_marker": True}' class="mb-0"/>
+                            <p t-if="o.partner_id.vat">
+                                <t t-out="o.company_id.account_fiscal_country_id.vat_label or 'RTN'"/>:
+                                <span t-field="o.partner_id.vat"/>
+                            </p>
+                        </div>
+                    </t>
+
                     <t t-set="address">
                         <address t-field="o.partner_id" t-options='{"widget": "contact", "fields": ["address", "name"], "no_marker": True}' class="mb-0"/>
                         <p t-if="o.partner_id.vat">
@@ -340,7 +358,7 @@
                             <span t-field="o.partner_id.vat"/>
                         </p>
                     </t>
-                    <t t-call="web.address_layout"/>
+<!--                    <t t-call="web.address_layout"/>-->
                 </div>
                 <t t-out="0"/>
             </div>
