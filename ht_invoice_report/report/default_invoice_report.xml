@@ -7,7 +7,7 @@
         <template id="web.address_layout">
             <t t-set="colclass" t-value="('col-sm-5' if report_type == 'html' else 'col-5') + ' ml-auto'"/>
             <t t-if="address">
-                <div class="address row">
+                <div class="address row" style="color: black !important">
                     <t t-if="information_block">
                         <t t-set="colclass" t-value="'col-5 offset-1'"/>
                         <div name="information_block" class="col-6">
