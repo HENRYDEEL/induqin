@@ -30,6 +30,49 @@
                                 <div>Teléfono: <span t-field="o.partner_id.mobile"/></div>
                             </div>
                         </t>
+                        <t t-elif="o._name == 'account.move'">
+                            <t t-if="o.move_type == 'out_invoice'">
+                                <div><strong> Cliente: <span t-field="o.partner_id"/></strong></div>
+                                <div>
+                                    <div>Dirección: <address t-field="o.partner_id" t-options='{"widget": "contact", "fields": ["address"], "no_marker": True}' class="mb-0"/></div>
+                                    <div>Teléfono: <span t-field="o.partner_id.mobile"/></div>
+                                </div>
+                            </t>
+
+                            <t t-elif="o.move_type == 'out_refund'">
+                                <div><strong> Cliente: <span t-field="o.partner_id"/></strong></div>
+                                <div>
+                                    <div>Dirección: <address t-field="o.partner_id" t-options='{"widget": "contact", "fields": ["address"], "no_marker": True}' class="mb-0"/></div>
+                                    <div>Teléfono: <span t-field="o.partner_id.mobile"/></div>
+                                </div>
+                            </t>
+
+                            <t t-elif="o.move_type == 'in_invoice'">
+                                <div><strong> Proveedor: <span t-field="o.partner_id"/></strong></div>
+                                <div>
+                                    <div>Dirección: <address t-field="o.partner_id" t-options='{"widget": "contact", "fields": ["address"], "no_marker": True}' class="mb-0"/></div>
+                                    <div>Teléfono: <span t-field="o.partner_id.mobile"/></div>
+                                </div>
+                            </t>
+
+                            <t t-elif="o.move_type == 'in_refund'">
+                                <div><strong> Proveedor: <span t-field="o.partner_id"/></strong></div>
+                                <div>
+                                    <div>Dirección: <address t-field="o.partner_id" t-options='{"widget": "contact", "fields": ["address"], "no_marker": True}' class="mb-0"/></div>
+                                    <div>Teléfono: <span t-field="o.partner_id.mobile"/></div>
+                                </div>
+                            </t>
+                            <t t-else="">
+                                <div><strong><span t-field="o.partner_id"/></strong></div>
+                                <div>
+                                    <address t-field="o.partner_id" t-options='{"widget": "contact", "fields": ["address"], "no_marker": True}' class="mb-0"/>
+                                    <p t-if="o.partner_id.vat">
+                                        <t t-out="o.company_id.account_fiscal_country_id.vat_label or 'RTN'"/>:
+                                        <span t-field="o.partner_id.vat"/>
+                                    </p>
+                                </div>
+                            </t>
+                        </t>
                         <t t-else="">
                             <div><strong><span t-field="o.partner_id"/></strong></div>
                             <div>
