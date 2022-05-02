@@ -16,16 +16,16 @@
                     </t>
                     <div name="address" t-att-class="colclass">
                         <t t-if="o._name == 'sale.order'">
-                            Cliente: <span t-field="o.partner_id"/>
+                            <strong> Cliente: <span t-field="o.partner_id"/></strong>
                             <div>
-                                <div>Dirección: <address t-field="o.partner_id" t-options='{"widget": "contact", "fields": ["address", "name"], "no_marker": True}' class="mb-0"/></div>
+                                <div>Dirección: <address t-field="o.partner_id" t-options='{"widget": "contact", "fields": ["address"], "no_marker": True}' class="mb-0"/></div>
                                 <div>Teléfono: <span t-field="o.partner_id.mobile"/></div>
                             </div>
                         </t>
                         <t t-else="">
-                            <span t-field="o.partner_id"/>
+                            <strong><span t-field="o.partner_id"/></strong>
                             <div>
-                                <address t-field="o.partner_id" t-options='{"widget": "contact", "fields": ["address", "name"], "no_marker": True}' class="mb-0"/>
+                                <address t-field="o.partner_id" t-options='{"widget": "contact", "fields": ["address"], "no_marker": True}' class="mb-0"/>
                                 <p t-if="o.partner_id.vat">
                                     <t t-out="o.company_id.account_fiscal_country_id.vat_label or 'RTN'"/>:
                                     <span t-field="o.partner_id.vat"/>
