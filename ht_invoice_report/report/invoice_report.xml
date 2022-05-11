@@ -240,13 +240,13 @@
                 </t>
             </t>
         </template>
-        <report
-                id="custom_account_invoices"
-                model="account.move"
-                name="ht_invoice_report.custom_report_invoice_main"
-                string="Print Invoice"
-                report_type="qweb-html"
-                multi="False"
-        />
+<!--        <report-->
+<!--                id="custom_account_invoices"-->
+<!--                model="account.move"-->
+<!--                name="ht_invoice_report.custom_report_invoice_main"-->
+<!--                string="Print Invoice"-->
+<!--                report_type="qweb-html"-->
+<!--                multi="False"-->
+<!--        />-->
     </data>
 </odoo>
