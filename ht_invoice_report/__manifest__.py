@@ -7,6 +7,7 @@
     'summary': '',
     "depends": [
         "base",
+        "sale",
         "account",
         "web"
     ],
@@ -14,6 +15,7 @@
     'data': [
         'views/account_move.xml',
         'report/invoice_report.xml',
+        'report/default_sale_order_report.xml',
         'report/default_invoice_report.xml'
     ],
     'installable': True,
