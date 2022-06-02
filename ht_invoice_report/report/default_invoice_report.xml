@@ -258,45 +258,45 @@
                                             <tr style="padding:5px;">
                                                 <th><span>IMPORTE EXONERADO </span></th>
                                                 <th style="border-left: 1px solid black; border-top: 1px solid black; border-right: 1px solid black; border-bottom: 1px solid black; background-color: #cfcfcf">
-                                                    <span class="text-right" t-esc="0.0" t-options='{"widget": "monetary", "display_currency": o.currency_id}'/>
+                                                    <div class="text-right" t-esc="0.0" t-options='{"widget": "monetary", "display_currency": o.currency_id}'/>
                                                 </th>
                                             </tr>
                                             <tr style="padding:5px;">
                                                 <th><span>IMPORTE EXENTO </span></th>
                                                 <th style="border-left: 1px solid black; border-top: 1px solid black; border-right: 1px solid black; border-bottom: 1px solid black; background-color: #cfcfcf">
-                                                    <span class="text-right" t-esc="0.0" t-options='{"widget": "monetary", "display_currency": o.currency_id}'/>
+                                                    <div class="text-right" t-esc="0.0" t-options='{"widget": "monetary", "display_currency": o.currency_id}'/>
                                                 </th>
                                             </tr>
                                             <tr style="padding:5px;">
                                                 <th><span>IMPORTE GRAVADO 15% </span></th>
                                                 <th style="border-left: 1px solid black; border-top: 1px solid black; border-right: 1px solid black; border-bottom: 1px solid black; background-color: #cfcfcf">
-                                                    <span class="text-right" t-esc="0.0" t-options='{"widget": "monetary", "display_currency": o.currency_id}'/>
+                                                    <div class="text-right" t-esc="0.0" t-options='{"widget": "monetary", "display_currency": o.currency_id}'/>
                                                 </th>
                                             </tr>
                                             <tr style="padding:5px;">
                                                 <th><span>IMPORTE GRAVADO 18% </span></th>
                                                 <th style="border-left: 1px solid black; border-top: 1px solid black; border-right: 1px solid black; border-bottom: 1px solid black; background-color: #cfcfcf">
-                                                    <span class="text-right" t-esc="0.0" t-options='{"widget": "monetary", "display_currency": o.currency_id}'/>
+                                                    <div class="text-right" t-esc="0.0" t-options='{"widget": "monetary", "display_currency": o.currency_id}'/>
                                                 </th>
                                             </tr>
                                             <tr style="padding:5px;">
                                                 <th><span>I.S.V 15% </span></th>
                                                 <th style="border-left: 1px solid black; border-top: 1px solid black; border-right: 1px solid black; border-bottom: 1px solid black; background-color: #cfcfcf">
 
-                                                    <span class="text-right" t-esc="tax_totals['amount_total'] - tax_totals['amount_untaxed']" t-options='{"widget": "monetary", "display_currency": o.currency_id}'/>
+                                                    <div class="text-right" t-esc="tax_totals['amount_total'] - tax_totals['amount_untaxed']" t-options='{"widget": "monetary", "display_currency": o.currency_id}'/>
                                                 </th>
                                             </tr>
                                             <tr style="padding:5px;">
                                                 <th><span>I.S.V 18% </span></th>
                                                 <th style="border-left: 1px solid black; border-top: 1px solid black; border-right: 1px solid black; border-bottom: 1px solid black; background-color: #cfcfcf">
 
-                                                    <span class="text-right" t-esc="0.0" t-options='{"widget": "monetary", "display_currency": o.currency_id}'/>
+                                                    <div class="text-right" t-esc="0.0" t-options='{"widget": "monetary", "display_currency": o.currency_id}'/>
                                                 </th>
                                             </tr>
                                             <tr style="padding:5px;border-bottom: 1px solid black;">
                                                 <th><span>TOTAL A PAGAR </span></th>
                                                 <th style="border-left: 1px solid black; border-top: 1px solid black; border-right: 1px solid black; border-bottom: 1px solid black; background-color: #cfcfcf">
-                                                    <span class="text-right" t-esc="tax_totals['formatted_amount_total']"/>
+                                                    <div class="text-right" t-esc="tax_totals['formatted_amount_total']"/>
                                                 </th>
                                             </tr>
 
