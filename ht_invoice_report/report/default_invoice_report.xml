@@ -110,7 +110,7 @@
                 </t>
                 <div class="page" style="font-size:12px !important">
                     <h2 style="color: red !important">
-
+                        <br/>
                         <span t-if="o.move_type == 'out_invoice' and o.state == 'posted'">No. de Factura: </span>
                         <span t-if="o.move_type == 'out_invoice' and o.state == 'draft'">Proyecto de factura</span>
                         <span t-if="o.move_type == 'out_invoice' and o.state == 'cancel'">Factura cancelada</span>
@@ -151,7 +151,7 @@
 
                     <table class="table table-sm o_main_table" name="invoice_line_table">
                         <thead>
-                            <tr>
+                            <tr style="font-size:12px !important">
                                 <th name="th_description" class="text-left"><span>Description</span></th>
                                 <th name="th_quantity" class="text-right"><span>Quantity</span></th>
                                 <th name="th_priceunit" t-attf-class="text-right {{ 'd-none d-md-table-cell' if report_type == 'html' else '' }}"><span>Unit Price</span></th>
