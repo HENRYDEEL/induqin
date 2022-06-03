@@ -14,6 +14,7 @@
     
     'data': [
         'views/account_move.xml',
+        'views/account_journal.xml',
         'report/invoice_report.xml',
         'report/default_sale_order_report.xml',
         'report/default_invoice_report.xml'

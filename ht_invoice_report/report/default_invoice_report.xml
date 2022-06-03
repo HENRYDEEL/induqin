@@ -20,13 +20,17 @@
                             <div><strong> Proveedor: <span t-field="o.partner_id"/></strong></div>
                             <div>
                                 <div>Dirección: <address t-field="o.partner_id" t-options='{"widget": "contact", "fields": ["address"], "no_marker": True}' class="mb-0"/></div>
+                                <div>RTN: <span t-field="o.partner_id.vat"/></div>
                                 <div>Teléfono: <span t-field="o.partner_id.mobile"/></div>
+
                             </div>
                         </t>
                         <t t-elif="o._name == 'sale.order'">
                             <div><strong> Cliente: <span t-field="o.partner_id"/></strong></div>
                             <div>
                                 <div>Dirección: <address t-field="o.partner_id" t-options='{"widget": "contact", "fields": ["address"], "no_marker": True}' class="mb-0"/></div>
+
+                                <div>RTN: <span t-field="o.partner_id.vat"/></div>
                                 <div>Teléfono: <span t-field="o.partner_id.mobile"/></div>
                             </div>
                         </t>
@@ -35,6 +39,7 @@
                                 <div><strong> Cliente: <span t-field="o.partner_id"/></strong></div>
                                 <div>
                                     <div>Dirección: <address t-field="o.partner_id" t-options='{"widget": "contact", "fields": ["address"], "no_marker": True}' class="mb-0"/></div>
+                                    <div>RTN: <span t-field="o.partner_id.vat"/></div>
                                     <div>Teléfono: <span t-field="o.partner_id.mobile"/></div>
                                 </div>
                             </t>
@@ -43,6 +48,7 @@
                                 <div><strong> Cliente: <span t-field="o.partner_id"/></strong></div>
                                 <div>
                                     <div>Dirección: <address t-field="o.partner_id" t-options='{"widget": "contact", "fields": ["address"], "no_marker": True}' class="mb-0"/></div>
+                                    <div>RTN: <span t-field="o.partner_id.vat"/></div>
                                     <div>Teléfono: <span t-field="o.partner_id.mobile"/></div>
                                 </div>
                             </t>
@@ -51,6 +57,7 @@
                                 <div><strong> Proveedor: <span t-field="o.partner_id"/></strong></div>
                                 <div>
                                     <div>Dirección: <address t-field="o.partner_id" t-options='{"widget": "contact", "fields": ["address"], "no_marker": True}' class="mb-0"/></div>
+                                    <div>RTN: <span t-field="o.partner_id.vat"/></div>
                                     <div>Teléfono: <span t-field="o.partner_id.mobile"/></div>
                                 </div>
                             </t>
@@ -59,6 +66,7 @@
                                 <div><strong> Proveedor: <span t-field="o.partner_id"/></strong></div>
                                 <div>
                                     <div>Dirección: <address t-field="o.partner_id" t-options='{"widget": "contact", "fields": ["address"], "no_marker": True}' class="mb-0"/></div>
+                                    <div>RTN: <span t-field="o.partner_id.vat"/></div>
                                     <div>Teléfono: <span t-field="o.partner_id.mobile"/></div>
                                 </div>
                             </t>
@@ -103,14 +111,17 @@
                 <div class="page" style="font-size:12px !important">
                     <h2 style="color: red !important">
 
-
-                        <span t-if="o.move_type == 'out_invoice' and o.state == 'posted'">FACTURA</span>
+                        <span t-if="o.move_type == 'out_invoice' and o.state == 'posted'">No. de Factura: </span>
                         <span t-if="o.move_type == 'out_invoice' and o.state == 'draft'">Proyecto de factura</span>
                         <span t-if="o.move_type == 'out_invoice' and o.state == 'cancel'">Factura cancelada</span>
                         <span t-if="o.move_type == 'out_refund'">Nota de crédito</span>
                         <span t-if="o.move_type == 'in_refund'">Nota de crédito del proveedor</span>
                         <span t-if="o.move_type == 'in_invoice'">Factura del proveedor</span>
-                        <span t-if="o.name != '/'" t-field="o.name"/>
+
+                        <t t-if="o.name !='/'">
+                            <span  t-field="o.journal_id.no_de_factura"/><span  t-field="o.name"/>
+                        </t>
+
                     </h2>
 
                     <div id="informations" class="row mt32 mb32">
@@ -144,8 +155,8 @@
                                 <th name="th_description" class="text-left"><span>Description</span></th>
                                 <th name="th_quantity" class="text-right"><span>Quantity</span></th>
                                 <th name="th_priceunit" t-attf-class="text-right {{ 'd-none d-md-table-cell' if report_type == 'html' else '' }}"><span>Unit Price</span></th>
-                                <th name="th_price_unit" t-if="display_discount" t-attf-class="text-right {{ 'd-none d-md-table-cell' if report_type == 'html' else '' }}">
-                                    <span>Disc.%</span>
+                                <th name="th_price_unit"  t-attf-class="text-right {{ 'd-none d-md-table-cell' if report_type == 'html' else '' }}">
+                                    <span>Descuentos (%)</span>
                                 </th>
                                 <th name="th_taxes" t-attf-class="text-left {{ 'd-none d-md-table-cell' if report_type == 'html' else '' }}"><span>Taxes</span></th>
                                 <th name="th_subtotal" class="text-right">
@@ -172,7 +183,7 @@
                                         <td t-attf-class="text-right {{ 'd-none d-md-table-cell' if report_type == 'html' else '' }}">
                                             <span class="text-nowrap" t-field="line.price_unit"/>
                                         </td>
-                                        <td t-if="display_discount" t-attf-class="text-right {{ 'd-none d-md-table-cell' if report_type == 'html' else '' }}">
+                                        <td t-attf-class="text-right {{ 'd-none d-md-table-cell' if report_type == 'html' else '' }}">
                                             <span class="text-nowrap" t-field="line.discount"/>
                                         </td>
                                         <td t-attf-class="text-left {{ 'd-none d-md-table-cell' if report_type == 'html' else '' }}">
@@ -229,6 +240,8 @@
 
                                 <div class="col-6">
                                     <div>
+                                        <b><span>Datos del Exonerado:</span></b>
+                                    </div>  <div>
                                         <b><span>LA FACTURA ES BENEFICIO DE TODOS "EXIJALA"</span></b>
                                     </div>
                                     <div>
@@ -335,6 +348,8 @@
                     <p t-if="o.move_type in ('out_invoice', 'in_refund') and o.payment_reference" name="payment_communication">
                         Please use the following communication for your payment : <b><span t-field="o.payment_reference"/></b>
                     </p>
+                    <p>Rango: <span  t-field="o.journal_id.rango"/></p>
+                    <p>Fecha limite: <span  t-field="o.journal_id.fecha_limite"/></p>
                     <p t-if="o.invoice_payment_term_id" name="payment_term">
                         <span t-field="o.invoice_payment_term_id.note"/>
                     </p>
@@ -355,7 +370,7 @@
                             <strong><span>ORIGINAL:CLIENTE</span></strong>
                         </div>
                         <div class="col-3">
-                            <strong><span>COPIA:EMISOR</span></strong>
+                            <strong><span>COPIA: Obligado Tributario Emisor</span></strong>
                         </div>
                         <div class="col-6"/>
                     </div>
@@ -555,8 +570,9 @@
                                     <span t-else="" t-field="company.vat"/>
                                 </li>
                                 <li t-if="company.phone">Tel: <span class="o_force_ltr" t-field="company.phone"/></li>
-                                <li t-if="company.email"><span t-field="company.email"/></li>
-                                <li t-if="company.website"><span t-field="company.website"/></li>
+                                <li t-if="company.mobile">Cel: <span class="o_force_ltr" t-field="company.mobile"/></li>
+                                <li t-if="company.email">Correo: <span t-field="company.email"/></li>
+                                <li t-if="company.company_registry"><span t-field="company.company_registry"/></li>
                             </ul>
                         </div>
                     </div>
