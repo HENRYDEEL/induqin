@@ -5,4 +5,4 @@ class AccountJournal(models.Model):
 
     rango = fields.Char()
     fecha_limite = fields.Date()
-    no_de_factura = fields.Date()
+    no_de_factura = fields.Char()
