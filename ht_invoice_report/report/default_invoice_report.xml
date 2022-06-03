@@ -11,7 +11,7 @@
                     <t t-if="information_block">
                         <t t-set="colclass" t-value="'col-5 offset-1'"/>
                         <div name="information_block" class="col-6">
-<!--                            <t t-out="information_block"/>-->
+<!--                            <t t-esc="information_block"/>-->
                         </div>
                     </t>
                     <div name="address" t-att-class="colclass">
@@ -75,7 +75,7 @@
                                 <div>
                                     <address t-field="o.partner_id" t-options='{"widget": "contact", "fields": ["address"], "no_marker": True}' class="mb-0"/>
                                     <p t-if="o.partner_id.vat">
-                                        <t t-out="o.company_id.account_fiscal_country_id.vat_label or 'RTN'"/>:
+                                        <t t-esc="o.company_id.account_fiscal_country_id.vat_label or 'RTN'"/>:
                                         <span t-field="o.partner_id.vat"/>
                                     </p>
                                 </div>
@@ -86,7 +86,7 @@
                             <div>
                                 <address t-field="o.partner_id" t-options='{"widget": "contact", "fields": ["address"], "no_marker": True}' class="mb-0"/>
                                 <p t-if="o.partner_id.vat">
-                                    <t t-out="o.company_id.account_fiscal_country_id.vat_label or 'RTN'"/>:
+                                    <t t-esc="o.company_id.account_fiscal_country_id.vat_label or 'RTN'"/>:
                                     <span t-field="o.partner_id.vat"/>
                                 </p>
                             </div>
@@ -420,7 +420,7 @@
                              t-options='{"widget": "contact", "fields": ["address", "name"], "no_marker": true}'
                         />
                         <p t-if="company.partner_id.vat">
-                            <t t-out="o.company_id.account_fiscal_country_id.vat_label or 'RTN'"/>:
+                            <t t-esc="o.company_id.account_fiscal_country_id.vat_label or 'RTN'"/>:
                             <span t-field="company.partner_id.vat"/>
                         </p>
                     </div>
@@ -440,13 +440,13 @@
                     <t t-set="address">
                         <address t-field="o.partner_id" t-options='{"widget": "contact", "fields": ["address", "name"], "no_marker": True}' class="mb-0"/>
                         <p t-if="o.partner_id.vat">
-                            <t t-out="o.company_id.account_fiscal_country_id.vat_label or 'RTN'"/>:
+                            <t t-esc="o.company_id.account_fiscal_country_id.vat_label or 'RTN'"/>:
                             <span t-field="o.partner_id.vat"/>
                         </p>
                     </t>
                     <t t-call="web.address_layout"/>
                 </div>
-                <t t-out="0"/>
+                <t t-esc="0"/>
             </div>
 
             <div t-attf-class="footer o_standard_footer o_company_#{company.id}_layout"  style="border-top: 1px solid #3bebff;">
@@ -463,7 +463,7 @@
                             <span t-field="company.website"/>
                         </li>
                         <li t-if="company.vat" class="list-inline-item d-inline"><t
-                                t-out="company.country_id.vat_label or 'RTN'"/>:
+                                t-esc="company.country_id.vat_label or 'RTN'"/>:
                             <span t-field="company.vat"/>
                         </li>
                     </ul>
@@ -501,7 +501,7 @@
 
             <div t-attf-class="o_company_#{company.id}_layout article o_report_layout_striped {{  'o_layout_background' if company.layout_background in ['Geometric', 'Custom']  else  '' }}" t-attf-style="background-image: url({{ 'data:image/png;base64,%s' % company.layout_background_image.decode('utf-8') if company.layout_background_image and company.layout_background == 'Custom' else '/base/static/img/bg_background_template.jpg' }});" t-att-data-oe-model="o and o._name" t-att-data-oe-id="o and o.id" t-att-data-oe-lang="o and o.env.context.get('lang')">
                 <t t-call="web.address_layout"/>
-                <t t-out="0"/>
+                <t t-esc="0"/>
             </div>
 
             <div t-attf-class="o_company_#{company.id}_layout footer o_background_footer"  style="border-top: 1px solid #3bebff;">
@@ -541,7 +541,7 @@
                     <!-- This div ensures that the address is not cropped by the header. -->
                     <t t-call="web.address_layout"/>
                 </div>
-                <t t-out="0"/>
+                <t t-esc="0"/>
             </div>
 
             <div t-attf-class="footer o_boxed_footer o_company_#{company.id}_layout"  style="border-top: 1px solid #3bebff;">
@@ -581,7 +581,7 @@
 
             <div t-attf-class="article o_report_layout_bold o_company_#{company.id}_layout {{  'o_layout_background' if company.layout_background in ['Geometric', 'Custom']  else  '' }}" t-attf-style="background-image: url({{ 'data:image/png;base64,%s' % company.layout_background_image.decode('utf-8') if company.layout_background_image and company.layout_background == 'Custom' else '/base/static/img/bg_background_template.jpg' }});" t-att-data-oe-model="o and o._name" t-att-data-oe-id="o and o.id" t-att-data-oe-lang="o and o.env.context.get('lang')">
                 <t t-call="web.address_layout"/>
-                <t t-out="0"/>
+                <t t-esc="0"/>
             </div>
 
             <div t-attf-class="footer   o_company_#{company.id}_layout" style="border-top: 1px solid #3bebff;">
