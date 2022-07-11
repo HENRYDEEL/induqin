@@ -424,7 +424,7 @@
                 model="mrp.production"
                 string="ORDEN DE PRODUCCION 1"
                 name="ht_mrp_report.report_production_order_view_0"
-                report_type="qweb-html"
+                report_type="qweb-pdf"
                 multi="False"
         />
     </data>
