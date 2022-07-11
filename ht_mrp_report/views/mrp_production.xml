@@ -1,0 +1,62 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <data>
+
+        <record id="mrp_production_form_inherit" model="ir.ui.view">
+            <field name="name">mrp.production.form</field>
+            <field name="model">mrp.production</field>
+            <field name="inherit_id" ref="mrp.mrp_production_form_view"/>
+
+            <field name="arch" type="xml">
+                <xpath expr="//field[@name='date_planned_start']" position="after">
+                    <field name="production_start"/>
+                    <field name="production_completion"/>
+                </xpath>
+
+                <xpath expr="//field[@name='bom_id']" position="after">
+                    <field name="elaborado_y_modificado_por" options="{'no_create': True, 'no_create_edit':True}" />
+                    <field name="revisado_por" options="{'no_create': True, 'no_create_edit':True}" />
+                    <field name="aprobado_por" options="{'no_create': True, 'no_create_edit':True}" />
+                    <field name="version"/>
+                    <field name="elaborado"/>
+                    <field name="version_vigente"/>
+                    <field name="cantidad_en_unidades"/>
+                    <field name="cantidad_real"/>
+                    <field name="cantidad_teorica"/>
+                    <field name="cantidad_en_unidades_2"/><field name="repeticiones"/>
+                </xpath>
+
+                <xpath expr="//notebook" position="after">
+                    <label for="conclusiones">Conclusiones</label>
+                    <field name="conclusiones"/>
+                </xpath>
+                <xpath expr="//notebook/page[last()]" position="after">
+                    <page string="Equipo A Utilizar">
+                        <field name="equipment_ids">
+                            <tree editable="bottom">
+                                <field name="description"/>
+                                <field name="si"/>
+                                <field name="no"/>
+                                <field name="observaciones"/>
+                            </tree>
+                        </field>
+                    </page>
+                    <page string="Otra información">
+                        <group>
+                            <group >
+                                <field name="responsable_de_llenado" options="{'no_create': True, 'no_create_edit':True}" />
+                                <field name="controlo_pesada" options="{'no_create': True, 'no_create_edit':True}" />
+                                <field name="jefe_de_produccion" options="{'no_create': True, 'no_create_edit':True}" />
+                                <field name="responsable_de_fabricacion" options="{'no_create': True, 'no_create_edit':True}" />
+                            </group>
+                            <group >
+                                <field name="despacho_de_empaque" options="{'no_create': True, 'no_create_edit':True}" />
+                                <field name="recepcion_de_empaque" options="{'no_create': True, 'no_create_edit':True}" />
+                            </group>
+                        </group>
+                    </page>
+                </xpath>
+            </field>
+        </record>
+    </data>
+</odoo>

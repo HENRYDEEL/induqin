@@ -1,0 +1,160 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<odoo>
+    <data>
+        <template id="report_manufacturing">
+            <div class="page" style="padding:0;   font-size: 14px">
+                <div>
+                    <div class="row mb8">
+                        <div class="col-12" style="border-left: 1px solid black; border-right: 1px solid black; border-top: 1px solid black; border-bottom: 1px solid black; text-align:center;">
+                            <b><span>MATERIAL DE EMPAQUE</span></b>
+                        </div>
+                    </div>
+                    <div class="row mb8">
+                        <table class="table table-sm o_main_table">
+                            <thead>
+                                <tr style="border: 1px solid black; border-left: 1px solid black; border-right: 1px solid black">
+                                    <th class="text-center " style="border-right: 1px solid black; border-top: 1px solid black">
+                                        <span>CANTIDAD</span>
+                                    </th>
+                                    <th class="text-center " style="border-right: 1px solid black; border-top: 1px solid black">
+                                        <span>DESCRIPCION</span>
+                                    </th>
+                                    <th class="text-center " style="border-right: 1px solid black; border-top: 1px solid black">
+                                        <span>CANTIDAD DEVUELTA</span>
+                                    </th>
+
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <t t-foreach="doc.move_raw_ids" t-as="line">
+                                    <tr style="border: 1px solid black; border-left: 1px solid black; border-right: 1px solid black">
+                                        <td class="text-right " style="border-right: 1px solid black; border-top: 1px solid black">
+                                            <span t-field="line.quantity_done"/>
+                                        </td>
+                                        <td class="text-left " style="border-right: 1px solid black; border-top: 1px solid black">
+                                            <span t-field="line.product_id.name"/>
+                                        </td>
+                                        <td class="text-right " style="border-right: 1px solid black; border-top: 1px solid black">
+                                            <t t-set="returned" t-value=" line.quantity_done - line.product_uom_qty"/>
+                                            <t t-if="returned > 0">
+                                            </t>
+                                            <t t-else="">
+                                                <span>0.00</span>
+                                            </t>
+                                        </td>
+                                    </tr>
+                                </t>
+                            </tbody>
+                        </table>
+                    </div>
+
+<!--                    <div class="row mb8">-->
+<!--                        <table style="width: 540px">-->
+<!--                            <thead>-->
+<!--                                <tr style="border: 1px solid black; border-left: 1px solid black; border-right: 1px solid black">-->
+<!--                                    <th class="text-center" style="border-top: 1px solid black">-->
+<!--                                        <span>PROCEDIMIENTO PARA LA FABRICACIÓN</span>-->
+<!--                                    </th>-->
+<!--                                </tr>-->
+<!--                            </thead>-->
+<!--                            <tbody>-->
+<!--                                <tr style="border-left: 1px solid black; border-right: 1px solid black;">-->
+<!--                                    <td style="border-top: 1px solid black">-->
+<!--                                        <span>1. Mezclar el carbopol con agua hasta su disolución.</span>-->
+<!--                                    </td>-->
+<!--                                </tr>-->
+<!--                                <tr style="border-left: 1px solid black; border-right: 1px solid black">-->
+<!--                                    <td>-->
+<!--                                        <span>2. Agregar la TEA.</span>-->
+<!--                                    </td>-->
+<!--                                </tr>-->
+<!--                                <tr style="border-left: 1px solid black; border-right: 1px solid black">-->
+<!--                                    <td>-->
+<!--                                        <span>3. Incorporar lentamente el alcohol etilico. </span>-->
+<!--                                    </td>-->
+<!--                                </tr>-->
+<!--                                <tr style="border-left: 1px solid black; border-right: 1px solid black">-->
+<!--                                    <td>-->
+<!--                                        <span>4. Homogenizar.</span>-->
+<!--                                    </td>-->
+<!--                                </tr>-->
+<!--                                <tr style="border-left: 1px solid black; border-right: 1px solid black; border-bottom: 1px solid black">-->
+<!--                                    <td>-->
+<!--                                        <span>5. Incorporar el aroma. </span>-->
+<!--                                    </td>-->
+<!--                                </tr>-->
+<!--                            </tbody>-->
+<!--                        </table>-->
+<!--                    </div>-->
+                </div>
+            </div>
+        </template>
+        <template id="report_manufacturing_view">
+            <t t-call="web.html_container">
+                <t t-foreach="docs" t-as="doc">
+                    <t t-set="lang" t-value="doc.user_id.sudo().lang"/>
+                    <div class="article" t-att-data-oe-model="doc and doc._name" t-att-data-oe-id="o and o.id"
+                         t-att-data-oe-lang="doc and doc.env.context.get('lang')">
+                        <t t-call="ht_mrp_report.report_manufacturing" t-lang="lang"/>
+                    </div>
+                </t>
+            </t>
+        </template>
+        <report
+                id="report_mrp_production"
+                model="mrp.production"
+                string="Material De Empaque"
+                name="ht_mrp_report.report_manufacturing_view"
+                report_type="qweb-pdf"
+                multi="False"
+        />
+
+
+        <template id="report_manufacturing_preparation">
+            <div class="page" style="padding:0;   font-size: 14px">
+                <div>
+
+                    <div class="row mb8">
+                        <table style="width:100%">
+                            <thead>
+                                <tr style="border: 1px solid black; border-left: 1px solid black; border-right: 1px solid black">
+                                    <th class="text-center" style="border-top: 1px solid black">
+                                        <span>PROCEDIMIENTO PARA LA FABRICACIÓN</span>
+                                    </th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr style="border-left: 1px solid black; border-right: 1px solid black;border-bottom:1px solid black;">
+                                    <td style="border-top: 1px solid black">
+                                        <t t-raw="doc.bom_id.procedimiento_para_la_fabricacion"/>
+                                    </td>
+                                </tr>
+
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </div>
+        </template>
+
+        <template id="report_manufacturing_preparation_view">
+            <t t-call="web.html_container">
+                <t t-foreach="docs" t-as="doc">
+                    <t t-set="lang" t-value="doc.user_id.sudo().lang"/>
+                    <div class="article" t-att-data-oe-model="doc and doc._name" t-att-data-oe-id="o and o.id"
+                         t-att-data-oe-lang="doc and doc.env.context.get('lang')">
+                        <t t-call="ht_mrp_report.report_manufacturing_preparation" t-lang="lang"/>
+                    </div>
+                </t>
+            </t>
+        </template>
+        <report
+                id="report_manufacturing_preparation_view"
+                model="mrp.production"
+                string="PROCEDIMIENTO PARA LA FABRICACIÓN"
+                name="ht_mrp_report.report_manufacturing_preparation_view"
+                report_type="qweb-pdf"
+                multi="False"
+        />
+    </data>
+</odoo>

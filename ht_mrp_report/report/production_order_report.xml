@@ -1,0 +1,431 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<odoo>
+    <data>
+        <template id="report_production_order">
+            <div class="page" style="padding:0; font-size: 14px">
+                <div>
+                    <div class="row mb8">
+                        <table class="table table-sm o_main_table">
+                            <thead>
+                                <tr style="border: 1px solid black; border-left: 1px solid black; border-right: 1px solid black">
+                                    <th rowspan="2" class="text-center " style="border-right: 1px solid black; border-top: 1px solid black">
+                                        <img t-if="doc.company_id.logo" t-att-src="image_data_uri(doc.company_id.logo)" alt="Logo"  style="width:100px !important; height: auto !important;  "/>
+                                    </th>
+                                    <th class="" style="border-right: 1px solid black; border-top: 1px solid black">
+                                        <span>FECHAS DE DOCUMENTO:</span>
+                                        <span>ELABORADO: <span><span t-field="doc.elaborado"/></span></span>
+                                        <span>VERSION VIGENTE: <span><span t-field="doc.version_vigente"/></span></span>
+                                    </th>
+                                    <th colspan="2" class="text-center " style="border-right: 1px solid black; border-top: 1px solid black">
+                                        <span>ORDEN DE PRODUCCION</span>
+                                    </th>
+                                    <th class="" style="border-right: 1px solid black; border-top: 1px solid black">
+<!--                                        <span>PAGINA: 1 DE 2</span><br/>-->
+                                        <span>CÓDIGO: RO-DP-003</span>
+                                    </th>
+                                </tr>
+                                <tr style="border-left: 1px solid black; border-right: 1px solid black; border-bottom: 1px solid black">
+                                    <th style="border-left: 1px solid black; border-top: 1px solid black; border-bottom: 1px solid black">
+                                        <span>Elaborado y Modificado por:</span>
+                                        <span><span t-field="doc.elaborado_y_modificado_por"/></span>
+                                    </th>
+                                    <th style="border-left: 1px solid black; border-top: 1px solid black">
+                                        <span>Revisado por:</span>
+                                        <span><span t-field="doc.revisado_por"/></span>
+                                    </th>
+                                    <th style="border-left: 1px solid black; border-top: 1px solid black">
+                                        <span>Aprobado por:</span>
+                                        <span><span t-field="doc.aprobado_por"/></span>
+                                    </th><th style="border-left: 1px solid black; border-top: 1px solid black">
+                                        <span>VERSION: <span t-field="doc.version"/></span>
+                                    </th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr style="border-left: 1px solid black; border-right: 1px solid black">
+                                    <td colspan="5" style="border-top: 1px solid black">
+                                        <b><span>LLENADO</span></b>
+                                    </td>
+                                </tr>
+<!--                                <tr style="border-left: 1px solid black; border-right: 1px solid black">-->
+<!--                                    <td style="border-top: 1px solid black; border-right: 1px solid black" class="text-center">-->
+<!--                                        <b><span>No.</span></b>-->
+<!--                                    </td>-->
+<!--                                    <td style="border-top: 1px solid black; border-right: 1px solid black" class="text-center">-->
+<!--                                        <b><span>DESCRICPCION</span></b>-->
+<!--                                    </td>-->
+<!--                                    <td style="border-top: 1px solid black; border-right: 1px solid black" class="text-center">-->
+<!--                                        <b><span>30ML</span></b>-->
+<!--                                    </td>-->
+<!--                                    <td style="border-top: 1px solid black; border-right: 1px solid black" class="text-center">-->
+<!--                                        <b><span>120ML</span></b>-->
+<!--                                    </td>-->
+<!--                                    <td style="border-top: 1px solid black; border-right: 1px solid black" class="text-center">-->
+<!--                                        <b><span>500ML</span></b>-->
+<!--                                    </td>-->
+<!--                                </tr>-->
+                                <t t-set="seq" t-value="1"/>
+                                <t t-foreach="doc.move_raw_ids" t-as="line">
+                                    <tr style="border: 1px solid black; border-left: 1px solid black; border-right: 1px solid black;border-bottom: 1px solid black; border-top: 1px solid black">
+                                        <td class="text-center" style="border-right: 1px solid black; border-top: 1px solid black">
+                                            <span t-esc="seq"/>
+                                        </td>
+                                        <td class="text-center" style="border-right: 1px solid black; border-top: 1px solid black">
+                                            <span t-field="line.product_id.name"/>
+                                        </td>
+                                        <td class="text-center" style="border-right: 1px solid black; border-top: 1px solid black">
+                                            <span t-field="line.quantity_done"/>
+                                        </td>
+                                        <td class="text-center" style="border-right: 1px solid black; border-top: 1px solid black">
+                                            <span t-field="line.quantity_done"/>
+                                        </td>
+                                        <td class="text-center" style="border-right: 1px solid black; border-top: 1px solid black">
+                                            <span t-field="line.quantity_done"/>
+                                        </td>
+                                        <t t-set="seq" t-value="seq + 1"/>
+                                    </tr>
+                                </t>
+
+                                <tr  >
+                                    <td colspan="5" >
+                                            <br/>
+                                    </td>
+                                </tr>
+                                <tr style="border-left: 1px solid black; border-right: 1px solid black;border-bottom: 1px solid black">
+                                    <td colspan="5" style="border-top: 1px solid black">
+                                        <b><span>EQUIPO A UTILIZAR</span></b>
+                                    </td>
+                                </tr>
+                                <tr style="border-left: 1px solid black; border-right: 1px solid black;border-bottom: 1px solid black">
+                                    <td style="border-top: 1px solid black; border-right: 1px solid black" class="text-center">
+                                        <b><span>No.</span></b>
+                                    </td>
+                                    <td style="border-top: 1px solid black; border-right: 1px solid black" class="text-center">
+                                        <b><span>DESCRICPCION</span></b>
+                                    </td>
+                                    <td style="border-top: 1px solid black; border-right: 1px solid black" class="text-center">
+                                        <b><span>SI</span></b>
+                                    </td>
+                                    <td style="border-top: 1px solid black; border-right: 1px solid black" class="text-center">
+                                        <b><span>NO</span></b>
+                                    </td>
+                                    <td style="border-top: 1px solid black; border-right: 1px solid black" class="text-center">
+                                        <b><span>OBSERVACIONES</span></b>
+                                    </td>
+                                </tr>
+                                <t t-set="seq" t-value="1"/>
+                                <t t-foreach="doc.equipment_ids" t-as="line">
+                                    <tr style="border: 1px solid black; border-left: 1px solid black; border-right: 1px solid black">
+                                        <td class="text-center" style="border-right: 1px solid black; border-top: 1px solid black">
+                                            <span t-esc="seq"/>
+                                        </td>
+                                        <td class="text-center" style="border-right: 1px solid black; border-top: 1px solid black">
+                                            <span t-field="line.description"/>
+                                        </td>
+                                        <td class="text-center" style="border-right: 1px solid black; border-top: 1px solid black">
+                                            <span t-field="line.si"/>
+                                        </td>
+                                        <td class="text-center" style="border-right: 1px solid black; border-top: 1px solid black">
+                                            <span t-field="line.no"/>
+                                        </td>
+                                        <td class="text-center" style="border-right: 1px solid black; border-top: 1px solid black">
+                                            <span t-field="line.observaciones"/>
+                                        </td>
+                                        <t t-set="seq" t-value="seq + 1"/>
+                                    </tr>
+                                </t>
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </div>
+        </template>
+        <template id="report_production_order_view">
+            <t t-call="web.html_container">
+                <t t-foreach="docs" t-as="doc">
+                    <t t-set="lang" t-value="doc.user_id.sudo().lang"/>
+                    <div class="article" t-att-data-oe-model="doc and doc._name" t-att-data-oe-id="o and o.id"
+                         t-att-data-oe-lang="doc and doc.env.context.get('lang')">
+                        <t t-call="ht_mrp_report.report_production_order" t-lang="lang"/>
+                    </div>
+                </t>
+            </t>
+        </template>
+        <report
+                id="report_mrp_production_order"
+                model="mrp.production"
+                string="ORDEN DE PRODUCCION 2"
+                name="ht_mrp_report.report_production_order_view"
+                report_type="qweb-pdf"
+                multi="False"
+        />
+
+
+        <template id="report_production_order_0">
+            <div class="page" style="padding:0; font-size: 14px">
+                <div>
+                    <div class="row mb8">
+                        <table class="table table-sm ">
+                            <tbody>
+                                <tr style="border: 1px solid black; border-left: 1px solid black; border-right: 1px solid black">
+                                    <td rowspan="2" class="text-center " style="border-right: 1px solid black; border-top: 1px solid black">
+                                        <img t-if="doc.company_id.logo" t-att-src="image_data_uri(doc.company_id.logo)" alt="Logo"  style="width:100px !important; height: auto !important;  "/>
+                                    </td>
+                                    <td class="" style="border-right: 1px solid black; border-top: 1px solid black">
+                                        <span>FECHAS DE DOCUMENTO:</span>
+                                        <span>ELABORADO: <span><span t-field="doc.elaborado"/></span></span>
+                                        <span>VERSION VIGENTE: <span><span t-field="doc.version_vigente"/></span></span>
+                                    </td>
+                                    <td colspan="2" class="text-center " style="border-right: 1px solid black; border-top: 1px solid black">
+                                        <span>ORDEN DE PRODUCCION</span>
+                                    </td>
+                                    <td class="" style="border-right: 1px solid black; border-top: 1px solid black">
+                                        <!--                                        <span>PAGINA: 1 DE 2</span><br/>-->
+                                        <span>CÓDIGO: RO-DP-003</span>
+                                    </td>
+                                </tr>
+                                <tr style="border-left: 1px solid black; border-right: 1px solid black; border-bottom: 1px solid black">
+                                    <td style="border-left: 1px solid black; border-top: 1px solid black; border-bottom: 1px solid black">
+                                        <span>Elaborado y Modificado por:</span>
+                                        <span><span t-field="doc.elaborado_y_modificado_por"/></span>
+                                    </td>
+                                    <td style="border-left: 1px solid black; border-top: 1px solid black">
+                                        <span>Revisado por:</span>
+                                        <span><span t-field="doc.revisado_por"/></span>
+                                    </td>
+                                    <td style="border-left: 1px solid black; border-top: 1px solid black">
+                                        <span>Aprobado por:</span>
+                                        <span><span t-field="doc.aprobado_por"/></span>
+                                    </td>
+                                    <td style="border-left: 1px solid black; border-top: 1px solid black">
+                                        <span>VERSION: <span t-field="doc.version"/></span>
+                                    </td>
+                                </tr>
+
+                            </tbody>
+                        </table>
+                    </div>
+                    <div class="row mb8">
+                        <table class="table table-sm ">
+                            <tbody>
+                                <tr style="border-left: 1px solid black; border-right: 1px solid black; border-bottom: 1px solid black">
+                                    <td style="border-left: 1px solid black; border-top: 1px solid black; border-bottom: 1px solid black">
+                                        <strong>PRESENTACION</strong>
+
+                                    </td>
+                                    <td style="border-left: 1px solid black; border-top: 1px solid black">
+                                        <strong>NOMBRE DEL PRODUCTO</strong>
+
+                                    </td>
+                                    <td style="border-left: 1px solid black; border-top: 1px solid black">
+                                        <strong>CÓDIGO DEL PRODUCTO</strong>
+
+                                    </td>
+                                    <td style="border-left: 1px solid black; border-top: 1px solid black">
+                                        <strong>LOTE N°</strong>
+                                    </td>
+                                    <td style="border-left: 1px solid black; border-top: 1px solid black">
+                                        <strong>FECHA DE FABRICACIÓN</strong>
+                                    </td>
+                                </tr>
+
+                                <tr style="border-left: 1px solid black; border-right: 1px solid black; border-bottom: 1px solid black">
+                                    <td style="border-left: 1px solid black; border-top: 1px solid black">
+                                        <span><span t-field="doc.bom_id.product_uom_id"/></span>
+                                    </td>
+                                    <td style="border-left: 1px solid black; border-top: 1px solid black">
+                                        <span><span t-field="doc.product_id"/></span>
+                                    </td>
+                                    <td style="border-left: 1px solid black; border-top: 1px solid black">
+                                        <span><span t-field="doc.product_id.default_code"/></span>
+                                    </td>
+                                    <td style="border-left: 1px solid black; border-top: 1px solid black">
+                                        <span><span t-field="doc.lot_producing_id"/></span>
+                                    </td>
+                                    <td style="border-left: 1px solid black; border-top: 1px solid black">
+                                        <span><span t-field="doc.production_start"/></span>
+                                    </td>
+                                </tr>
+
+                                <tr style="border-left: 1px solid black; border-right: 1px solid black; border-bottom: 1px solid black">
+                                    <td style="border-left: 1px solid black; border-top: 1px solid black">
+                                        <strong>CANTIDAD A<br/>PRODUCIR</strong>
+                                    </td>
+                                    <td style="border-left: 1px solid black; border-top: 1px solid black">
+                                        <strong>Fecha</strong>
+                                    </td>
+                                    <td style="border-left: 1px solid black; border-top: 1px solid black">
+                                        <strong>No. Order De<br/>Produccion</strong>
+                                    </td>
+                                    <td style="border-left: 1px solid black; border-top: 1px solid black">
+                                        <strong>Formula Maestra</strong>
+                                    </td>
+                                    <td style="border-left: 1px solid black; border-top: 1px solid black">
+                                        <strong>Fecha de finalización</strong>
+                                    </td>
+                                </tr>
+
+                                <tr style="border-left: 1px solid black; border-right: 1px solid black; border-bottom: 1px solid black">
+                                    <td style="border-left: 1px solid black; border-top: 1px solid black">
+                                        <span><span t-field="doc.qty_producing"/></span>
+                                    </td>
+                                    <td style="border-left: 1px solid black; border-top: 1px solid black">
+                                        <span><span t-field="doc.production_start"/></span>
+                                    </td>
+                                    <td style="border-left: 1px solid black; border-top: 1px solid black">
+                                        <span><span t-field="doc.product_qty"/></span>
+                                    </td>
+                                    <td style="border-left: 1px solid black; border-top: 1px solid black">
+                                        <span><span t-field="doc.bom_id.formula_name"/></span>
+                                    </td>
+                                    <td style="border-left: 1px solid black; border-top: 1px solid black">
+                                        <span><span t-field="doc.production_completion"/></span>
+                                    </td>
+                                </tr>
+
+                                <tr style="border-left: 1px solid black; border-right: 1px solid black; border-bottom: 1px solid black">
+                                    <td colspan="5"  style="text-align: center;border-left: 1px solid black; border-top: 1px solid black">
+                                           <strong>CANTIDADES</strong>
+                                    </td>
+                                </tr>
+                                <tr style="border-left: 1px solid black; border-right: 1px solid black; border-bottom: 1px solid black">
+                                    <td style="border-left: 1px solid black; border-top: 1px solid black">
+                                        <span>Rendimient</span>
+                                    </td>
+                                    <td style="border-left: 1px solid black; border-top: 1px solid black">
+                                        <span>Cantidad En Unidades (litros)</span>
+                                    </td>
+                                    <td style="border-left: 1px solid black; border-top: 1px solid black">
+                                        <span><span t-field="doc.cantidad_en_unidades"/></span>
+                                    </td>
+                                    <td style="border-left: 1px solid black; border-top: 1px solid black">
+                                        <span>Hora Inicial</span>
+                                    </td>
+                                    <td style="border-left: 1px solid black; border-top: 1px solid black">
+                                        <span>Hora Final</span>
+                                    </td>
+                                </tr>
+                                <tr style="border-left: 1px solid black; border-right: 1px solid black; border-bottom: 1px solid black">
+                                    <td style="border-left: 1px solid black; border-top: 1px solid black">
+
+                                    </td>
+                                    <td style="border-left: 1px solid black; border-top: 1px solid black">
+                                        <span>Cantidad Real (litros)</span>
+                                    </td>
+                                    <td style="border-left: 1px solid black; border-top: 1px solid black">
+                                        <span><span t-field="doc.cantidad_real"/></span>
+                                    </td>
+                                    <td style="border-left: 1px solid black; border-top: 1px solid black">
+
+                                    </td>
+                                    <td style="border-left: 1px solid black; border-top: 1px solid black">
+
+                                    </td>
+                                </tr>
+                                <tr style="border-left: 1px solid black; border-right: 1px solid black; border-bottom: 1px solid black">
+                                    <td style="border-left: 1px solid black; border-top: 1px solid black">
+
+                                    </td>
+                                    <td style="border-left: 1px solid black; border-top: 1px solid black">
+                                        <span>Cantidad Teorica (litros)</span>
+                                    </td>
+                                    <td style="border-left: 1px solid black; border-top: 1px solid black">
+                                        <span><span t-field="doc.cantidad_teorica"/></span>
+                                    </td>
+                                    <td style="border-left: 1px solid black; border-top: 1px solid black">
+                                        <span>Repeticiones </span>
+                                    </td>
+                                    <td style="border-left: 1px solid black; border-top: 1px solid black">
+                                        <span><span t-field="doc.repeticiones"/></span>
+                                    </td>
+                                </tr>
+
+                                <tr style="border-left: 1px solid black; border-right: 1px solid black; border-bottom: 1px solid black">
+                                    <td style="border-left: 1px solid black; border-top: 1px solid black">
+
+                                    </td>
+                                    <td style="border-left: 1px solid black; border-top: 1px solid black">
+                                        <span>Cantidad En Unidades (litros)</span>
+                                    </td>
+                                    <td style="border-left: 1px solid black; border-top: 1px solid black">
+                                        <span><span t-field="doc.cantidad_en_unidades"/></span>
+                                    </td>
+                                    <td style="border-left: 1px solid black; border-top: 1px solid black">
+
+                                    </td>
+                                    <td style="border-left: 1px solid black; border-top: 1px solid black">
+
+                                    </td>
+                                </tr>
+
+                                <tr style="border-left: 1px solid black; border-right: 1px solid black; border-bottom: 1px solid black">
+                                    <td colspan="5"  style="text-align: center;border-left: 1px solid black; border-top: 1px solid black">
+                                        <strong>FORMULA CUALI-CUANTITATIVA</strong>
+                                    </td>
+                                </tr>
+                                <tr style="border-left: 1px solid black; border-right: 1px solid black; border-bottom: 1px solid black">
+                                    <td style="border-left: 1px solid black; border-top: 1px solid black">
+                                        <strong>Cantidad</strong>
+                                    </td>
+                                    <td style="border-left: 1px solid black; border-top: 1px solid black">
+                                        <strong>Descripcion</strong>
+                                    </td>
+                                    <td style="border-left: 1px solid black; border-top: 1px solid black">
+                                        <strong>Medida</strong>
+                                    </td>
+                                    <td style="border-left: 1px solid black; border-top: 1px solid black">
+                                         <strong>Codigo MP</strong>
+                                    </td>
+                                    <td style="border-left: 1px solid black; border-top: 1px solid black">
+                                        <strong>Lote No.</strong>
+                                    </td>
+                                </tr>
+
+                                <t t-foreach="doc.move_raw_ids" t-as="line">
+                                    <tr style="border: 1px solid black; border-left: 1px solid black; border-right: 1px solid black;border-bottom: 1px solid black; border-top: 1px solid black">
+                                        <td class="text-right" style="border-right: 1px solid black; border-top: 1px solid black">
+                                            <span t-field="line.quantity_done"/>
+                                        </td>
+                                        <td class="text-center" style="border-right: 1px solid black; border-top: 1px solid black">
+                                            <span t-field="line.product_id.name"/>
+                                        </td>
+                                        <td class="text-center" style="border-right: 1px solid black; border-top: 1px solid black">
+                                            <span t-field="line.product_uom"/>
+                                        </td>
+                                        <td class="text-right" style="border-right: 1px solid black; border-top: 1px solid black">
+                                            <span t-field="line.quantity_done"/>
+                                        </td>
+                                        <td class="text-center" style="border-right: 1px solid black; border-top: 1px solid black">
+
+                                        </td>
+
+                                    </tr>
+                                </t>
+                            </tbody>
+
+                        </table>
+                    </div>
+                </div>
+            </div>
+        </template>
+        <template id="report_production_order_view_0">
+            <t t-call="web.html_container">
+                <t t-foreach="docs" t-as="doc">
+                    <t t-set="lang" t-value="doc.user_id.sudo().lang"/>
+                    <div class="article" t-att-data-oe-model="doc and doc._name" t-att-data-oe-id="o and o.id"
+                         t-att-data-oe-lang="doc and doc.env.context.get('lang')">
+                        <t t-call="ht_mrp_report.report_production_order_0" t-lang="lang"/>
+                    </div>
+                </t>
+            </t>
+        </template>
+        <report
+                id="report_mrp_production_order_0"
+                model="mrp.production"
+                string="ORDEN DE PRODUCCION 1"
+                name="ht_mrp_report.report_production_order_view_0"
+                report_type="qweb-html"
+                multi="False"
+        />
+    </data>
+</odoo>
